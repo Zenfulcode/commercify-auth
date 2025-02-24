@@ -1,7 +1,7 @@
 {
   "name": "commercify-auth",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -22,13 +22,13 @@
     "bun"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/wobsoriano/pkg-name#readme",
+  "homepage": "https://github.com/Zenfulcode/Commercify",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wobsoriano/pkg-name.git"
   },
-  "bugs": "https://github.com/wobsoriano/pkg-name/issues",
-  "author": "Robert Soriano <sorianorobertc@gmail.com>",
+  "bugs": "https://github.com/Zenfulcode/Commercify/issues",
+  "author": "gkhaavik",
   "devDependencies": {
     "bun-plugin-dts": "^0.3.0",
     "@types/bun": "^1.1.10"

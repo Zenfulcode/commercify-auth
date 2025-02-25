@@ -31,14 +31,14 @@ export interface AuthResponse {
  */
 export class CommercifyAuth {
   private axiosInstance: AxiosInstance;
-  private basePath: string = "/api/v2";
+  private basePath: string = "/auth";
 
   /**
    * @param baseURL Base URL for the API (default: http://localhost:6091)
    */
-  constructor(private baseURL: string = "http://localhost:6091") {
+  constructor(private baseURL: string = "http://localhost:6091/api/v2") {
     this.axiosInstance = axios.create({
-      baseURL: this.baseURL,
+      baseURL: `${this.baseURL}${this.basePath}`,
       headers: { "Content-Type": "application/json" },
     });
   }
@@ -50,7 +50,7 @@ export class CommercifyAuth {
    */
   async signIn(credentials: SignInRequest): Promise<AuthResponse> {
     const response = await this.axiosInstance.post<AuthResponse>(
-      `${this.basePath}/signin`,
+      "/signin",
       credentials
     );
     return response.data;
@@ -63,7 +63,7 @@ export class CommercifyAuth {
    */
   async signUp(userDetails: SignUpRequest): Promise<AuthResponse> {
     const response = await this.axiosInstance.post<AuthResponse>(
-      `${this.basePath}/signup`,
+      "/signup",
       userDetails
     );
     return response.data;
@@ -75,10 +75,9 @@ export class CommercifyAuth {
    * @returns A promise that resolves to an authentication response.
    */
   async refresh(refreshToken: string): Promise<AuthResponse> {
-    const response = await this.axiosInstance.post<AuthResponse>(
-      `${this.basePath}/refresh`,
-      { refreshToken }
-    );
+    const response = await this.axiosInstance.post<AuthResponse>("/refresh", {
+      refreshToken,
+    });
     return response.data;
   }
 }
